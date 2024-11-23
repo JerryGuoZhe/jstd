@@ -57,6 +57,9 @@ namespace jstd {
 				delete[] v;
 				v=u;
 			}
+			bool empty() {
+				return length()==0;
+			}
 	};
 }
 #endif
