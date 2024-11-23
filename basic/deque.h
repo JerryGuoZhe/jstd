@@ -8,6 +8,25 @@ namespace jstd {
 				T *q;
 				int sz, capacity;
 				int fnt, rear;
+				void shrink() {
+					if(fnt*2<capacity) {
+						T *u=new T[capacity/2];
+						capacity/=2;
+						for(int i=rear; i<fnt; i++)
+							u[i]=q[i];
+						delete[] q;
+						q=u;
+					}
+					if(rear*2>capacity) {
+						T *u=new T[capacity/2];
+						capacity/=2;
+						for(int i=rear; i<fnt; i++)
+							u[i-capacity]=q[i];
+						fnt-=capacity, rear-=capacity;
+						delete[] q;
+						q=u;
+					}
+				}
 			public:
 				deque() {
 					q=new T[16];
@@ -45,27 +64,12 @@ namespace jstd {
 					++sz;
 				}
 				T pop_front() {
-					if(fnt*2<capacity) {
-						T *u=new T[capacity/2];
-						capacity/=2;
-						for(int i=rear; i<fnt; i++)
-							u[i]=q[i];
-						delete[] q;
-						q=u;
-					}
+					shrink();
 					--sz;
 					return q[--fnt];
 				}
 				T pop_back() {
-					if(rear*2>capacity) {
-						T *u=new T[capacity/2];
-						capacity/=2;
-						for(int i=rear; i<fnt; i++)
-							u[i-capacity]=q[i];
-						fnt-=capacity, rear-=capacity;
-						delete[] q;
-						q=u;
-					}
+					shrink();
 					--sz;
 					return q[rear++];
 				}
