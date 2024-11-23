@@ -15,7 +15,7 @@ namespace jstd {
 					return v.pop();
 				}
 				int size() {
-					return v.length();
+					return v.size();
 				}
 				T top() {
 					return v[v.length()-1];
