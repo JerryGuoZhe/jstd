@@ -57,9 +57,6 @@ namespace jstd {
 				int size() {
 					return v.size();
 				}
-				int max_size() {
-					return v.max_size();
-				}
 				bool empty() {
 					return v.empty();
 				}
