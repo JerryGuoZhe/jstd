@@ -31,7 +31,7 @@ namespace jstd {
 				}
 				v[sz++]=x;
 			}
-			T operator[](int x) {
+			T &operator[](int x) {
 				return v[x];
 			}
 			T pop() {

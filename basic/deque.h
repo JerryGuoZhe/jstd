@@ -73,6 +73,12 @@ namespace jstd {
 					--sz;
 					return q[rear++];
 				}
+				T front() {
+					return q[fnt-1];
+				}
+				T back() {
+					return q[rear];
+				}
 				int size() {
 					return sz;
 				}
